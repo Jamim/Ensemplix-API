@@ -80,12 +80,12 @@ class V2::RegionsController < ApplicationController
     end
 
     if @region['world'].eql?("CarnageR5")
-        region['min_x'] = nil
-        region['min_y'] = nil
-        region['min_z'] = nil
-        region['max_x'] = nil
-        region['max_y'] = nil
-        region['max_z'] = nil
+        @region['min_x'] = nil
+        @region['min_y'] = nil
+        @region['min_z'] = nil
+        @region['max_x'] = nil
+        @region['max_y'] = nil
+        @region['max_z'] = nil
     end
 
     @owners = Owner.where("region = ? AND world = ?", params[:region], params[:world]).pluck("player")
