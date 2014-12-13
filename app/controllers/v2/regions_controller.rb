@@ -79,7 +79,7 @@ class V2::RegionsController < ApplicationController
       return;
     end
 
-    if region['world'].eql?("CarnageR5")
+    if @region['world'].eql?("CarnageR5")
         region['min_x'] = nil
         region['min_y'] = nil
         region['min_z'] = nil
