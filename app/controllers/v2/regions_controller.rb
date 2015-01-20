@@ -4,6 +4,7 @@ class V2::RegionsController < ApplicationController
   # Информация о регионах.
   def index
     @regions = Region.all
+	@regions = Region.order("created DESC")
     @regions = @regions.where("world = ?", params[:world]) if params.has_key? :world
 
     if params.has_key? :offset
@@ -79,13 +80,13 @@ class V2::RegionsController < ApplicationController
       return;
     end
 
-    if region['world'].eql?("CarnageR5")
-        region['min_x'] = nil
-        region['min_y'] = nil
-        region['min_z'] = nil
-        region['max_x'] = nil
-        region['max_y'] = nil
-        region['max_z'] = nil
+    if @region['world'].eql?("CarnageR5")
+        @region['min_x'] = nil
+        @region['min_y'] = nil
+        @region['min_z'] = nil
+        @region['max_x'] = nil
+        @region['max_y'] = nil
+        @region['max_z'] = nil
     end
 
     @owners = Owner.where("region = ? AND world = ?", params[:region], params[:world]).pluck("player")
@@ -145,6 +146,7 @@ class V2::RegionsController < ApplicationController
       @radius = 0        
     end
     
+    @regions = Region.order("created DESC")
     @regions = Region.where("min_x <= :x + :radius AND max_x > :x - :radius AND min_z < :z + :radius AND max_z > :z - :radius
          AND world = :world", x: params[:x], z: params[:z], radius: @radius, world: params[:world])
 
@@ -230,6 +232,7 @@ class V2::RegionsController < ApplicationController
           OR `regions_members`.`player` = ?", params[:player], params[:player])
     end
 
+	@regions = Region.order("created DESC")
     @regions = @regions.where("`regions`.`world` = ?", params[:world]) if params.has_key? :world
 
     if params.has_key? :offset

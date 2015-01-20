@@ -5,6 +5,7 @@ class V2::WarpsController < ApplicationController
   def index
 
     @warps = Warp
+	@warps = @warps.order("created DESC")
     @warps = @warps.where("world = ?", params[:world]) if params.has_key? :world
     @count = @warps.count()
 
@@ -68,6 +69,7 @@ class V2::WarpsController < ApplicationController
       return;
     end
 
+	@warps = Warp.order("created DESC")
     @warps = Warp.where("x > :x -250 AND x < :x + 250 AND z > :z -250 AND z < :z + 250 AND world = :world",
                         x: params[:x], z: params[:z], world: params[:world])
 
@@ -106,6 +108,7 @@ class V2::WarpsController < ApplicationController
       return;
     end
 
+    @warps = Warp.order("created DESC")
     @warps = Warp.where("owner = ?", params[:player])
     @warps = @warps.where("world = ?", params[:world]) if params.has_key? :world
 
