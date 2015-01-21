@@ -232,7 +232,7 @@ class V2::RegionsController < ApplicationController
           OR `regions_members`.`player` = ?", params[:player], params[:player])
     end
 
-	@regions = Region.order("created DESC")
+    @regions = @regions.order("created DESC")
     @regions = @regions.where("`regions`.`world` = ?", params[:world]) if params.has_key? :world
 
     if params.has_key? :offset
