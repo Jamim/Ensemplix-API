@@ -37,7 +37,7 @@ class V2::RegionsController < ApplicationController
         region['parent'] = nil
       end
 
-      if world.eql?("CarnageR5")
+      if world.eql?("CarnageR6")
         region['min_x'] = nil
         region['min_y'] = nil
         region['min_z'] = nil
@@ -80,7 +80,7 @@ class V2::RegionsController < ApplicationController
       return;
     end
 
-    if @region['world'].eql?("CarnageR5")
+    if @region['world'].eql?("CarnageR6")
         @region['min_x'] = nil
         @region['min_y'] = nil
         @region['min_z'] = nil
@@ -184,7 +184,7 @@ class V2::RegionsController < ApplicationController
         region['parent'] = nil
       end
 
-      if world.eql?("CarnageR5")
+      if world.eql?("CarnageR6")
         region['min_x'] = nil
         region['min_y'] = nil
         region['min_z'] = nil
@@ -266,7 +266,7 @@ class V2::RegionsController < ApplicationController
         region['parent'] = nil
       end
 
-      if world.eql?("CarnageR5")
+      if world.eql?("CarnageR6")
         region['min_x'] = nil
         region['min_y'] = nil
         region['min_z'] = nil
