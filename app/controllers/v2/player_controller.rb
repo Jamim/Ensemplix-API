@@ -9,7 +9,7 @@ class V2::PlayerController < ApplicationController
     end
 
     @player = Player.select("`id`, `level`, `players`.`player`, `registration`, `online`, `players_balance`.`coins`,
-     CONCAT('http://ensemplix.ru/images/logos/', IFNULL(logo_url,'default.jpg')) as `logo_url`,
+     CONCAT('https://ensemplix.ru/images/logos/', IFNULL(logo_url,'default.jpg')) as `logo_url`,
      `players_played`.`played`, `players_experience`.`experience`, `players_prefix`.`prefix`,
      `players_colors`.`name` as `name_color`, `players_colors`.`chat` as `chat_color`, `clans_members`.`clan`,
      `last_online`.`time` as `last_online`")

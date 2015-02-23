@@ -10,7 +10,7 @@ class V2::ShopsController < ApplicationController
     @shop = @shop.where("`items`.`id` = ?", params[:id]) if params.has_key? :id
     @shop = @shop.where("`items`.`data` = ?", params[:data]) if params.has_key? :data
     @shop = @shop.select("`logs_shop`.*, `items`.`id` as `item_id`, `items`.`data`,
-       CONCAT('http://ensemplix.ru/images/items/', IFNULL(`items`.`icon`,'default.png')) as `icon_image`")
+       CONCAT('https://ensemplix.ru/images/items/', IFNULL(`items`.`icon`,'default.png')) as `icon_image`")
 
     if params.has_key? :offset
       @shop = @shop.offset(params[:offset])
@@ -69,7 +69,7 @@ class V2::ShopsController < ApplicationController
     @shop = @shop.where("`items`.`id` = ?", params[:id]) if params.has_key? :id
     @shop = @shop.where("`items`.`data` = ?", params[:data]) if params.has_key? :data
     @shop = @shop.select("`logs_shop`.*, `items`.`id` as `item_id`, `items`.`data`,
-       CONCAT('http://ensemplix.ru/images/items/', IFNULL(`items`.`icon`,'default.png')) as `icon_image`")
+       CONCAT('https://ensemplix.ru/images/items/', IFNULL(`items`.`icon`,'default.png')) as `icon_image`")
 
     if params.has_key? :offset
       @shop = @shop.offset(params[:offset])
@@ -121,7 +121,7 @@ class V2::ShopsController < ApplicationController
     @shop = @shop.where("`items`.`data` = ?", params[:data]) if params.has_key? :data
 
     @shop = @shop.select("`logs_shop`.*, `items`.`id` as `item_id`, `items`.`data`,
-      CONCAT('http://ensemplix.ru/images/items/', IFNULL(`items`.`icon`,'default.png')) as `icon_image`")
+      CONCAT('https://ensemplix.ru/images/items/', IFNULL(`items`.`icon`,'default.png')) as `icon_image`")
 
 
     if params.has_key? :offset
