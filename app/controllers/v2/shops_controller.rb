@@ -6,6 +6,7 @@ class V2::ShopsController < ApplicationController
     @shop = Shop.order("id DESC")
     @shop = @shop.where("world = ?", params[:world]) if params.has_key? :world
     @shop = @shop.where("operation = ?", params[:operation]) if params.has_key? :operation
+    @shop = @shop.where("`logs_shop`.`id` >= ?", params[:min_deal_id]) if params.has_key? :min_deal_id
     @shop = @shop.joins("INNER JOIN `items` ON (`items`.`item` = `logs_shop`.`item`)")
     @shop = @shop.where("`items`.`id` = ?", params[:id]) if params.has_key? :id
     @shop = @shop.where("`items`.`data` = ?", params[:data]) if params.has_key? :data
