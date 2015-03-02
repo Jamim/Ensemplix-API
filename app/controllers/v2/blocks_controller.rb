@@ -72,7 +72,9 @@ class V2::BlocksController < ApplicationController
       @blocks = @blocks.offset(params[:offset])
     end
 
-    @count = @blocks.count()
+    if !params.has_key? :no_count
+      @count = @shop.count()
+    end
 
     @limit = (params.has_key? :limit) ? [1, [100, params[:limit]].min].max : 100
     @blocks = @blocks.limit(@limit)
