@@ -74,7 +74,8 @@ class V2::BlocksController < ApplicationController
 
     @count = @blocks.count()
 
-    @blocks = @blocks.limit(100)
+    @limit = (params.has_key? :limit) ? [1, [100, params[:limit]].min].max : 100
+    @blocks = @blocks.limit(@limit)
 
     if @blocks.empty?
       render :json => {
