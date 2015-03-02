@@ -17,7 +17,10 @@ class V2::ShopsController < ApplicationController
       @shop = @shop.offset(params[:offset])
     end
 
-    @count = @shop.count()
+    if !params.has_key? :no_count
+      @count = @shop.count()
+    end
+
     @shop = @shop.limit(100)
 
     if @shop.nil?
